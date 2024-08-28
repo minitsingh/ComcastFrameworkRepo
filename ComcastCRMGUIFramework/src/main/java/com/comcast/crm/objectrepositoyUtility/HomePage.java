@@ -18,6 +18,9 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	@FindBy(name="Products")
+	private WebElement productLink;
+	
 	@FindBy(linkText = "Organizations" )
 	private WebElement orgLink;
 	
@@ -52,6 +55,19 @@ public class HomePage {
 	public WebElement getMorelink() {
 		return morelink;
 	}
+	
+	public WebElement getProductLink() {
+		return productLink;
+	}
+
+	public WebElement getAdminImg() {
+		return adminImg;
+	}
+
+	public WebElement getSignOutLink() {
+		return signOutLink;
+	}
+
 	
 	
 	/**
