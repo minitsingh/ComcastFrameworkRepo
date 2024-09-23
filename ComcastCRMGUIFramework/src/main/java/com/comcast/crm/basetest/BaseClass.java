@@ -46,11 +46,17 @@ public class BaseClass {
 
 	}
 
-	// @Parameters("BROWSER")
+	//@Parameters("BROWSER")
 	@BeforeClass(groups = { "smokeTest", "regressionTest" })
 	public void configBc() throws IOException {
 		System.out.println("===Launch the browser===");
-		String BROWSER = fLib.getDataFromPropertiesFile("browser");
+		
+		/* this browser was commented to receive parameter from command line */
+		/* uncomment it to receive parameter from properties file*/
+		
+		//String BROWSER = fLib.getDataFromPropertiesFile("browser");
+		
+		String BROWSER=System.getProperty("browser",fLib.getDataFromPropertiesFile("browser"));
 
 		// above data fetching from prop file is commented to
 		// Receive data from xml file for cross browser testing
@@ -69,16 +75,25 @@ public class BaseClass {
 			driver = new ChromeDriver();
 		}
 		sdriver = driver;
-		UtilityClassObject.setDriver(driver);
+		UtilityClassObject.setDriver(sdriver);
 
 	}
 
 	@BeforeMethod(groups = { "smokeTest", "regressionTest" })
 	public void configBM() throws IOException {
 		System.out.println("===Login===");
-		String URL = fLib.getDataFromPropertiesFile("url");
-		String USERNAME = fLib.getDataFromPropertiesFile("username");
-		String PASSWORD = fLib.getDataFromPropertiesFile("password");
+		
+		/* below this is parameter from cmd comment this and uncomment properties when needed */
+		/*then concept of default data value has been provide*/
+		String URL=System.getProperty("url",fLib.getDataFromPropertiesFile("url"));
+		String USERNAME=System.getProperty("username",fLib.getDataFromPropertiesFile("username"));
+		String PASSWORD=System.getProperty("password",fLib.getDataFromPropertiesFile("password"));
+		
+		/* below url,UN,PW was commented to receive parameter from command line */
+		/* uncomment it to receive parameter from properties file*/
+		//String URL = fLib.getDataFromPropertiesFile("url");
+		//String USERNAME = fLib.getDataFromPropertiesFile("username");
+		//String PASSWORD = fLib.getDataFromPropertiesFile("password");
 
 		LoginPage lp = new LoginPage(driver);
 		lp.loginToApp(URL, USERNAME, PASSWORD);

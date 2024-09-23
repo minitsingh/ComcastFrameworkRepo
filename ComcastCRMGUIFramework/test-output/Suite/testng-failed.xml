@@ -6,17 +6,17 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="practice.test.InvoiceTest">
+      <class name="com.comcast.crm.orgtest.CreateOrganizationTest">
         <methods>
           <include name="config"/>
+          <include name="createOrganizationTest"/>
           <include name="configBS"/>
           <include name="configBc"/>
           <include name="configAS"/>
           <include name="configBM"/>
           <include name="configAm"/>
-          <include name="createInvoice"/>
         </methods>
-      </class> <!-- practice.test.InvoiceTest -->
+      </class> <!-- com.comcast.crm.orgtest.CreateOrganizationTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
